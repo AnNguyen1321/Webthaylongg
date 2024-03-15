@@ -1,4 +1,4 @@
-import Image from '../models/Image';
+import Image from '../models/FileUpload';
 import _ from 'lodash';
 
 export const listUser = (req, res) => {

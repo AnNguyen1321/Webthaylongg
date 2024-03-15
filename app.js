@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import moment from 'moment'
+
 var bodyParser = require('body-parser')
 
 const app = express();
@@ -14,8 +15,7 @@ const account = require("./routes/Account")
 const comment = require("./routes/Comment")
 const contribution = require("./routes/Contribution")
 const faculty = require('./routes/Faculty')
-const guest  =require('./routes/Guest')
-const image = require('./routes/Image')
+const fileUpload = require('./routes/fileUpload')
 const role = require("./routes/Role")
 const statistics = require("./routes/Statistics")
 
@@ -27,8 +27,7 @@ app.use('/api',account)
 app.use('/api',comment);
 app.use('/api',contribution);
 app.use('/api',faculty);
-app.use('/api',guest);
-app.use('/api',image);
+app.use('/api',fileUpload);
 app.use('/api',role);
 app.use('/api',statistics);
 

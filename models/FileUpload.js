@@ -10,6 +10,18 @@ const Image = mongoose.Schema({
         type: String,
         required: true
     },
+    fileSize: {
+        type : Number,
+        required : true
+    },
+    fileName:{
+        type : String, 
+        required : true
+    },
+    UploadDate:{
+        type : Date,
+        required : true
+    },
 },  {
     timestamps: true,
   })

@@ -10,6 +10,12 @@ const Statistics = mongoose.Schema({
         ref:'Faculty',
         required:true
     },
+    FacultyCount:{
+        type :Number
+    },
+    ContributorsCount:{
+        type : Number
+    },
 },  {
     timestamps: true,
   })

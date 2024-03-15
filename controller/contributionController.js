@@ -1,4 +1,4 @@
-import Contribution from '../models/Contribution';
+import Contribution from '../models/Contribution.js';
 import _ from 'lodash';
 
 export const listUser = (req, res) => {
