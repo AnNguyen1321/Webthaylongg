@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 const {ObjectId} = mongoose.Schema;
-const Image = mongoose.Schema({
+const FileUpload = mongoose.Schema({
     contribution_id:{
         type: ObjectId,
         ref:'Contribution',
@@ -25,4 +25,4 @@ const Image = mongoose.Schema({
 },  {
     timestamps: true,
   })
-module.exports = mongoose.model("Image", Image);
+module.exports = mongoose.model("FileUpload", FileUpload);

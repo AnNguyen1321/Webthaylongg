@@ -25,7 +25,11 @@ const Account= mongoose.Schema({
     hashed_password: {
         type: String,
     },
-
+    phone:{
+        type:String,
+        unique : true,
+        match:/^[0-9]{10}$/
+    }
 } ,
  {
     timestamps: true,
