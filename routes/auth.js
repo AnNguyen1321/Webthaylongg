@@ -11,7 +11,6 @@ var salt = 8;                     //random value
 
 router.get('/register', async (req, res) => {
        const role = await roleController.getAllRoles();
-       
        const roles = role.map(role => {
          return {
            _id: role._id.toString(), 
@@ -26,21 +25,22 @@ router.get('/register', async (req, res) => {
 router.post('/register', async (req, res) => {
    try {
       var AccountRegistration = req.body;
-      var roleID = req.body;
+      console.log(AccountRegistration);
       var hashPassword = bcrypt.hashSync(AccountRegistration.password, salt);
       var user = {
          email: AccountRegistration.email,
-         password: hashPassword,
+         hashed_password: hashPassword,
          dob: AccountRegistration.dob,
+         role_id : AccountRegistration.roleID,
          name: AccountRegistration.name,
          address: AccountRegistration.address,
          phone: AccountRegistration.phone
       }
-
       await AccountModel.create(user);
       res.redirect('/auth/login')
    } catch (err) {
       res.send(err)
+      console.log(err);
    }
 })
 

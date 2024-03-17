@@ -31,7 +31,7 @@ top: 13px;
               <div class="row">
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input type="text" id="Name" class="form-control form-control-lg" />
+                    <input type="text" id="Name" name="name"class="form-control form-control-lg" />
                     <label class="Validate" for="Name">Name</label>
                   </div>
 
@@ -39,7 +39,7 @@ top: 13px;
                 <div class="col-md-6 mb-4">
 
                   <div class="form-outline">
-                    <input type="Email" id="email" class="form-control form-control-lg" />
+                    <input type="Email" id="email" name="email" class="form-control form-control-lg" />
                     <label class="validation" for="Email">Email</label>
                   </div>
 
@@ -50,7 +50,7 @@ top: 13px;
                 <div class="col-md-6 mb-4 d-flex align-items-center">
 
                   <div class="form-outline datepicker w-100">
-                    <input type="password" class="form-control form-control-lg" id="password" />
+                    <input type="password" name="password" class="form-control form-control-lg" id="password" />
                     <label for="password" class="form-label">Password</label>
                   </div>
 
@@ -58,8 +58,8 @@ top: 13px;
                    <div class="col-md-6 mb-4 d-flex align-items-center">
 
                   <div class="form-outline datepicker w-100">
-                    <input type="date" class="form-control form-control-lg" id="DOB" />
-                    <label for="DOB" class="form-label">Date Of Birth</label>
+                    <input type="date" name="dob" class="form-control form-control-lg" id="dob" />
+                    <label for="dob" class="form-label">Date Of Birth</label>
                   </div>
                 </div>
               </div>
@@ -68,7 +68,7 @@ top: 13px;
                 <div class="col-md-6 mb-4 pb-2">
 
                   <div class="form-outline">
-                    <input type="Address" id="Address" class="form-control form-control-lg" />
+                    <input type="Address" name="address" id="Address" class="form-control form-control-lg" />
                     <label class="form-label" for="Address">Address</label>
                   </div>
 
@@ -89,10 +89,9 @@ top: 13px;
             
                 </div>
               </div>
-                 <select id="roleID" name="roleId">
+                 <select id="roleID" name="roleID">
                   {{#each roles }}
                   <option value="{{_id}}">{{name}}</option>
-
                   {{/each}}
                   </select>
                   <label class="form-label select-label">Choose option</label>
@@ -108,43 +107,5 @@ top: 13px;
     </div>
   </div>
 </section>
-
-
-
-
-            <div class="row">
-              <div class="form-outline col-md-3 ">
-                <div class="form-outline">
-                  <input type="text" id="name" class="form-control" />
-                  <label class="validate" for="name">Name</label>
-                </div>
-              </div>
-              <div class="row">
-              <div class="col-md-4 ">
-            <div class="form-outline ">
-              <input type="email" id="Email" class="form-control" />
-              <label class="validate" for="Email">Email</label>
-            </div>
-            </div>
-         <div class="row">
-              <div class=" form-outline col-md-6">
-            <div class="form-outline">
-              <input type="password" id="password" class="form-control" />
-              <label class="validate" for="password">Password</label>
-            </div>
-            </div>
-            </div>
-              <div class="form-outline mb-4">
-              <input type="date" id="dob" name= "dob" class="form-control" />
-              <label class="validate" for="password">DOB</label>
-            </div>
-             <div class="form-outline mb-4">
-              <input type="Number" id="Phone"name="Phone"class="form-control" />
-              <label class="validate" for="phone">Phone Number</label>
-            </div>
-             <div class="form-outline mb-4">
-              <input type="Number" id="Phone"name="Phone"class="form-control" />
-              <label class="validate" for="password">Phone Number</label>
-
 </form>
 </body>

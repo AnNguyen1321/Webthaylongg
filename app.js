@@ -11,6 +11,7 @@ const app = express();
 dotenv.config();
 moment().format('DD MM YYYY hh:mm:ss');
 
+app.use('/auth', authRouter);
 //import "express-session" library
 var session = require('express-session');
 //set session timeout
@@ -25,6 +26,7 @@ app.use(session({
 // config body-parser library (get data from client-side)
 var bodyParser = require('body-parser')
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const account = require("./routes/Account")
 const comment = require("./routes/Comment")
@@ -74,8 +76,6 @@ app.use((req, res, next) => {
 const { checkSingleSession } = require('./middlewares/auth');
 app.use('/admin', checkSingleSession);
 
-
-app.use('/auth', authRouter);
 const port = process.env.PORT || 3000
 app.listen(port ,()=>{
     console.log("Server is running on",port);
