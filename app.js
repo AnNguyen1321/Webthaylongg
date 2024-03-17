@@ -4,13 +4,11 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import moment from 'moment'
 var path = require('path');
-var logger = require('morgan');
 var authRouter = require('./routes/auth');
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser');
 const app = express();
 dotenv.config();
-app.use(bodyParser.json());
 moment().format('DD MM YYYY hh:mm:ss');
 
 //import "express-session" library
@@ -25,8 +23,8 @@ app.use(session({
   cookie: { maxAge: timeout },
 }));
 // config body-parser library (get data from client-side)
-var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
+var bodyParser = require('body-parser')
+app.use(bodyParser.json());
 
 const account = require("./routes/Account")
 const comment = require("./routes/Comment")
@@ -35,6 +33,7 @@ const faculty = require('./routes/Faculty')
 const fileUpload = require('./routes/fileUpload')
 const role = require("./routes/Role")
 const statistics = require("./routes/Statistics")
+const auth = require('./routes/auth')
 
 app.use(express.json())
 app.use(cors({ credentials: "same origin" }));
@@ -45,6 +44,7 @@ app.use('/api',faculty);
 app.use('/api',fileUpload);
 app.use('/api',role);
 app.use('/api',statistics);
+app.use('/api',auth);
 //setup view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

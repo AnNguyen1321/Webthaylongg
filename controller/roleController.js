@@ -1,6 +1,11 @@
 import Role from '../models/Role';
 import _ from 'lodash';
 
+
+exports.getAllRoles = async (req, res) => {
+     const roles = await Role.find();
+     return roles;
+};
 export const listUser = (req, res) => {
     Role.find()
     .sort({

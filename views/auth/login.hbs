@@ -1,25 +1,57 @@
-<form action="/auth/login" method="post">
-   <h4 class="center-align bold">Login</h4>
-   <div class="row">
-      <div class="input-field col s12 m4 offset-m4">
-         <label>Username</label>
-         <input class="validate" type="text" name="username" required id="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>.gradient-custom { background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}</style>
+</head>
+<body>
+<form action="/auth/login" method="post"></form>
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+
+              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+              <p class="text-white-50 mb-5">Please enter your login and password!</p>
+
+              <div class="form-outline form-white mb-4">
+                <input type="email" id="Email" class="form-control form-control-lg" />
+                <label class="form-label" for="Email">Email</label>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <input type="password" id="password" class="form-control form-control-lg" />
+                <label class="form-label" for="password">Password</label>
+              </div>
+
+              <button class="btn btn-outline-light btn-lg px-5" type="submit" value="login">Login</button>
+
+              <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+              </div>
+
+            </div>
+
+            <div>
+              <p class="mb-0">Don't have an account? <a href="/auth/register" class="text-white-50 fw-bold">Sign Up</a>
+              </p>
+            </div>
+
+          </div>
+        </div>
       </div>
-   </div>
-   <div class="row">
-      <div class="input-field col s12 m4 offset-m4">
-         <label>Password</label>
-         <input class="validate" type="password" name="password" required id="">
-      </div>
-   </div>
-   <div class="row">
-      <div class="col s12 m4 offset-m4 center-align">
-         <input class="btn" type="submit" value="Login">
-      </div>
-   </div>
-   <div class="row">
-      <div class="col s12 m4 offset-m4 center-align">
-         <a class="btn blue" href="/auth/register">Register</a>
-      </div>
-   </div>
+    </div>
+  </div>
+</section>
 </form>
+
+</body>
