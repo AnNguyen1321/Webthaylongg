@@ -1,5 +1,5 @@
-//check login only
-const checkLoginSession = (req, res, next) => {
+
+const checkNameSession = (req, res, next) => {
     if (req.session.name) {
        next();
     } else {
@@ -7,8 +7,8 @@ const checkLoginSession = (req, res, next) => {
     }
  }
  
- //check single role
- const checkSingleSession = (req, res, next) => {
+
+ const checkAdminSession = (req, res, next) => {
     if (req.session.name && req.session.role == 'admin') {
        next();
     }
@@ -18,7 +18,7 @@ const checkLoginSession = (req, res, next) => {
     }
  }
  
- //check multiple roles
+
  const checkMultipleSession = (allowedRoles) => (req, res, next) => {
     if (req.session.name && allowedRoles.includes(req.session.role)) {
        next();
@@ -28,7 +28,6 @@ const checkLoginSession = (req, res, next) => {
  }
  
  module.exports = {
-    checkLoginSession,
-    checkSingleSession,
-    checkMultipleSession
+    checkNameSession,
+    checkAdminSession,
  }

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const Role = mongoose.Schema({
-    rolename: {
+    name: {
         type: String,
         required: true
     }
