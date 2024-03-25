@@ -6,7 +6,9 @@ import moment from 'moment'
 var path = require('path');
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser');
+
 const app = express();
+
 const morgan = require('morgan');
 dotenv.config();
 moment().format('DD MM YYYY hh:mm:ss');
@@ -71,13 +73,14 @@ mongoose.connection.on('error', err => {
 
 app.use('/auth', authRouter);
 
+
 app.use((req, res, next) => {
     res.locals.role = req.session.role;
     console.log(res.locals);
     next();
   });
 
-//set user authorization for whole router 
+//set authorization for whole router 
 const { checkRoles } = require('./middlewares/auth');
 
 app.use('/admin', checkRoles(['Administrator']));

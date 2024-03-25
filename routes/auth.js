@@ -24,13 +24,13 @@ router.post('/login', async (req, res) => {
    try {
       var AccountLogin = req.body;
       var user = await AccountModel.findOne({ email: AccountLogin.email})
-      var role = await roleModel.findOne({ _id : user.role_id})
       if (user) {
+         var role = await roleModel.findOne({ _id : user.role_id})
          var hash = bcrypt.compareSync(AccountLogin.password, user.hashed_password)
          if (hash) {
             req.session.name = user.name;
             req.session.role = role.name;
-            console.log(req.session);
+            console.log(req.session.role);
             if (role.name === 'Administrator') {
                res.redirect('/admin');
              } else if (role.name === 'Guest') {
@@ -42,13 +42,13 @@ router.post('/login', async (req, res) => {
              } else if (role.name === 'Marketing Coordinator') {
                res.redirect('/marketing_coordinator');
              } 
-             else {
-               res.redirect('/auth/login');
-            }
          }
          else {
-            res.redirect('/auth/login',{message:'Wrong username or password'});
+           res.render('auth/login', { error: 'Wrong email or password' });
          }
+      }
+      else {
+         res.render('auth/login', { error: 'Wrong email or password' });
       }
    } catch (err) {
       res.send(err)
@@ -57,6 +57,7 @@ router.post('/login', async (req, res) => {
 
 router.get('/logout', (req, res) => {
    req.session.destroy();
+
    res.redirect("/auth/login");
 })
 
