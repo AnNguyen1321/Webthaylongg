@@ -1,5 +1,5 @@
 const AccountModel = require('../../models/Account');
-//import "bcryptjs" library
+
 var bcrypt = require('bcryptjs');
 var salt = 8;                     //random value
 
@@ -14,7 +14,6 @@ module.exports = getAllAccount
 const createAccount = async (req , res) =>{
    try{
     var AccountRegistration = req.body;
-    console.log(AccountRegistration);
     var hashPassword = bcrypt.hashSync(AccountRegistration.password, salt);
     var user = {
        email: AccountRegistration.email,
@@ -30,7 +29,6 @@ const createAccount = async (req , res) =>{
    }
    catch (err){
       res.redirect('/auth/register' , err)
-      
    }
 }
 module.exports = createAccount;

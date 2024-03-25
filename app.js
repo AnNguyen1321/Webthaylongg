@@ -33,15 +33,15 @@ const role = require("./routes/Role")
 const statistics = require("./routes/Statistics")
 const authRouter = require('./routes/auth');
 
+
+
+//seeding database
+const roleSeeds = require('./seeds/roleSeeds')
+const seeds1 = require('./seeds/FacultiesSeeds')
+
 app.use(express.json())
 app.use(cors({ credentials: "same origin" }));
-app.use('/api',account)
-app.use('/api',comment);
-app.use('/api',contribution);
-app.use('/api',faculty);
-app.use('/api',fileUpload);
-app.use('/api',role);
-app.use('/api',statistics);
+
 app.use(morgan('dev'));
 app.use(
 	bodyParser.urlencoded({
@@ -72,16 +72,20 @@ mongoose.connection.on('error', err => {
 app.use('/auth', authRouter);
 
 app.use((req, res, next) => {
-    res.locals.name = req.session.name;
+    res.locals.role = req.session.role;
     console.log(res.locals);
     next();
   });
 
 //set user authorization for whole router 
-const { checkAdminSession } = require('./middlewares/auth');
-const { checkNameSession } = require('./middlewares/auth');
-app.use('/admin', checkAdminSession);
-app.use('/guest',checkAdminSession);
+const { checkRoles } = require('./middlewares/auth');
+
+app.use('/admin', checkRoles(['Administrator']));
+app.use('/guest',checkRoles(['Guest']));
+app.use('/MarketingManager',checkRoles(['Marketing Manager']));
+app.use('/MarketingCoordinator',checkRoles(['MarketingCoordinator']));
+app.use('/student',checkRoles(['Student']));
+
 const port = process.env.PORT || 3000
 app.listen(port ,()=>{
     console.log("Server is running on",port);

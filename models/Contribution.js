@@ -9,27 +9,21 @@ const Contribution = mongoose.Schema({
     faculty_id:{
         type: ObjectId,
         ref:'Faculty',
-        required:true
     },
-    submissiondate: {
+    submission_date: {
         type: Date,
-        required: true
     },
-    uploaddate: {
+    upload_date: {
         type: Date,
-        required: true
     },
-    closuredate: {
+    closure_date: {
         type: Date,
-        required: true
     },
-    finalclosuredate: {
+    finalclosure_date: {
         type: Date,
-        required: true
     },
     status: {
         type: Number,
-        required: true,
     }
 },  {
     timestamps: true,

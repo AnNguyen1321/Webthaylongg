@@ -2,7 +2,8 @@ import mongoose from 'mongoose'
 const Faculty = mongoose.Schema({
     facultyname: {
         type: String,
-        required: true
+        required: true,
+        unique : true
     },
 },  {
     timestamps: true,

@@ -27,7 +27,7 @@ const Account= mongoose.Schema({
     },
     phone:{
         type:String,
-    }
+    },
 } ,
  {
     timestamps: true,

@@ -2,18 +2,18 @@ var express = require('express')
 var router = express.Router()
 var AccountModel = require('../models/Account');
 var roleModel = require ('../models/Role');
-const createAccounts = require ('../controller/auth/accountController');
+
 
 //import "bcryptjs" library
-var bcrypt = require('bcryptjs');
-var salt = 8;                     //random value
+var bcrypt = require('bcryptjs');                     //random value
 
 
 router.get('/register', async (req, res) => {
       const roles = await roleModel.find({});
-       console.log(roles);
-       res.render('auth/register', {roles});
+
+      res.render('auth/register', {roles});
 });
+const createAccounts = require ('../controller/auth/accountController');
 router.post('/register', createAccounts);
 
 router.get('/login', (req, res) => {
@@ -31,23 +31,23 @@ router.post('/login', async (req, res) => {
             req.session.name = user.name;
             req.session.role = role.name;
             console.log(req.session);
-            if (role.name == 'admin') {
+            if (role.name === 'Administrator') {
                res.redirect('/admin');
-            }
-            else if(role.name == 'guest') {
+             } else if (role.name === 'Guest') {
                res.redirect('/guest');
-            }
-            else if (role.name == 'QA')
-            {
-               res.redirect('/QA')
-            }
-            else 
-            {
-               res.redirect('/auth/login')
+             } else if (role.name === 'Student') {
+               res.redirect('/Student');
+             } else if (role.name === 'Marketing Manager') {
+               res.redirect('/marketing_manager');
+             } else if (role.name === 'Marketing Coordinator') {
+               res.redirect('/marketing_coordinator');
+             } 
+             else {
+               res.redirect('/auth/login');
             }
          }
          else {
-            res.redirect('/auth/login');
+            res.redirect('/auth/login',{message:'Wrong username or password'});
          }
       }
    } catch (err) {

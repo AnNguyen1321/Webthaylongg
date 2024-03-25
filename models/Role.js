@@ -3,7 +3,8 @@ import mongoose from 'mongoose'
 const Role = mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique : true
     }
 },  {
     timestamps: true,
